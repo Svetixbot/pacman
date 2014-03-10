@@ -1,2 +1,4 @@
-pacman
+The game of pacman
 ======
+
+
