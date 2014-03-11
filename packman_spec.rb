@@ -1,7 +1,6 @@
 require "minitest/spec"
 require "minitest/autorun"
 require './pacman'
-require './map'
 
 describe 'next_step' do
   before(:each) do
@@ -22,8 +21,6 @@ describe 'next_step' do
 
   it 'cant jump over positions' do
   	@pacman.next_step([0,0] => :empty, [0,1] => :pacman, [0,3] => :empty, [0,2] => :empty, [0,4] => :empty).must_equal [0,2]
-  	map = Map.new
-  	map.map
   end
 
 end
