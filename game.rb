@@ -7,7 +7,8 @@ class Game
 	end
 
 	def pacman_makes_a_move pacmans_next_step
-		return if (pacman_wants_to_jump? pacmans_next_step) || (pacman_wants_to_travel_through_walls? pacmans_next_step)
+		return if (pacman_wants_to_jump? pacmans_next_step) || 
+						(pacman_wants_to_travel_through_walls? pacmans_next_step)
 
 		make_a_move pacmans_next_step
 	end
