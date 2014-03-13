@@ -68,4 +68,36 @@ describe 'game' do
 		end
 	end
 
+	describe 'game keeps a number of pacmans moves' do
+		it 'counts 0 moves when packan hasnt moved yet' do
+			@game.pacmans_number_of_moves.must_equal 0
+		end
+		it 'counts 1 move when pacman makes one step' do
+			@game.pacman_makes_a_move [0,2]
+			@game.pacmans_number_of_moves.must_equal 1
+		end
+	end
+
+	describe 'finished?' do
+		it 'should be finished when there is no pellets' do
+			@game.pacmans_world = {[0,0] => :empty,[0,1] => :pacman}
+			@game.finished?.must_equal true
+		end
+		it 'should not be finished when there are pellets' do
+			@game.finished?.must_equal false
+		end
+		it 'wont change the score after game is finished' do
+			@game.pacmans_world = {[0,0] => :empty,[0,1] => :pacman}
+			@game.pacmans_score.must_equal 0
+			@game.pacman_makes_a_move [0,0]
+			@game.pacmans_score.must_equal 0
+		end
+		it 'wont change number of pacmans moves after game is finished' do
+			@game.pacmans_world = {[0,0] => :empty,[0,1] => :pacman}
+			@game.pacmans_number_of_moves.must_equal 0
+			@game.pacman_makes_a_move [0,0]
+			@game.pacmans_number_of_moves.must_equal 0
+		end
+	end
+
 end
